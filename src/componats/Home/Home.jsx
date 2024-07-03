@@ -1,7 +1,48 @@
+import { FaBirthdayCake, FaBookReader, FaFacebook, FaGithub, FaNetworkWired, FaUniversity, FaVoicemail } from 'react-icons/fa';
 import pdfPage from '../../assets/Landing Page Design.pdf';
+import image2 from '../../assets/image2.jpeg';
 import './home.css'
+import { MdBloodtype, MdEmail } from 'react-icons/md';
+import { FaLocationDot } from 'react-icons/fa6';
+import { useState } from 'react';
+import emailjs from 'emailjs-com';
 
 const Home = () => {
+
+    // contact
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm({
+            ...form,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        emailjs.send(
+            'service_anis000',
+            'template_qcmwbx5',
+            form,
+            'LCFqVR4SENXGs7gsX'
+        ).then((response) => {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Your message has been sent successfully!');
+            setForm({ name: '', email: '', message: '' });
+        }).catch((err) => {
+            console.log('FAILED...', err);
+            alert('There was an error sending your message. Please try again later.');
+        });
+    };
+
+
+    // another 
     const skills = [
         { name: "HTML", percentage: 90 },
         { name: "CSS", percentage: 85 },
@@ -42,6 +83,11 @@ const Home = () => {
             serverCodeLink: "https://github.com/anissarkeraraf/goromer-adventure-server-site",
         },
     ];
+
+    const education = {
+        degree: "B.Sc in Computer Science and Engineering",
+        institution: "United College of Aviation Science and Management",
+    };
 
     return (
         <div>
@@ -118,6 +164,86 @@ const Home = () => {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            {/* Education section */}
+            <div id="education" className='education-section text-white pt-32 md:pt-52 px-5 md:px-10 lg:px-24'>
+                <h2 className="text-3xl text-[#D3D3D3] font-bold font-mono">My Education</h2>
+                <div className='mt-4'>
+                    <p className='text-xl font-thin mb-2'>{education.degree}</p>
+                    <p className='text-xl font-thin'>{education.institution}</p>
+                </div>
+            </div>
+
+            {/* About section */}
+            <div id="about" className='about-section text-white pt-32 md:pt-52 px-5 md:px-10 lg:px-24'>
+                <div>
+                    <h2 className=" mb-10 text-3xl text-[#D3D3D3] font-bold font-mono">About Me</h2>
+                </div>
+                <div className='md:flex justify-around'>
+
+                    <div>
+                        <img className='w-[250px] h-[250px] rounded-full' src={image2} alt="" />
+                    </div>
+                    <div className='mt-10'>
+                        <p className='flex items-center mb-4'><FaBirthdayCake className='text-xl mr-3 text-yellow-400'></FaBirthdayCake> Birthday <span className='mr-10 ml-10'>:</span> <span className='text-gray-400'>21 March 2004</span></p>
+                        <p className='flex items-center mb-4'><FaBookReader className='text-xl mr-3 text-yellow-400'></FaBookReader> Study <span className='mr-10 ml-[60px]'>: </span><span className='text-gray-400'>B.Sc in Computer Science and Engineering</span></p>
+                        <p className='flex items-center mb-4'><FaUniversity className='text-xl mr-3 text-yellow-400'></FaUniversity> University <span className='mr-10 ml-8'>: </span><span className='text-gray-400'>United College Of Aviation Science and Management</span></p>
+                        <p className='flex items-center mb-4'><MdBloodtype className='text-xl mr-3 text-yellow-400'></MdBloodtype> Blood <span className='mr-10 ml-[60px]'>: </span><span className='text-gray-400'>O+(Positive)</span></p>
+                        <p className='flex items-center mb-4'><FaNetworkWired className='text-xl mr-3 text-yellow-400'></FaNetworkWired> Interests <span className='mr-10 ml-10'>: </span><span className='text-gray-400'>Coding, Learning & Exploring</span></p>
+                        <p className='flex items-center mb-4'><FaLocationDot className='text-xl mr-3 text-yellow-400'></FaLocationDot> Location <span className='mr-10 ml-10'>: </span><span className='text-gray-400'>Dhaka, Bangladesh</span></p>
+                        <div className='mt-10'>
+                            <h2 className='text-4xl'>Hi, I'm Anis & I'm <sub><small><span className='text-yellow-400'>Full Stack Developer</span></small></sub></h2>
+                            <p className='text-gray-400 md:w-[550px] mt-5'>Hi! I am Anis Sarkar. I am a Full Stack Developer. I am highly dedicated to my work and have gained one year of valuable experience.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            {/* Contact Section */}
+            <div id="contact" className='contact-section text-white pt-32 md:pt-52 px-5 md:px-10 lg:px-24'>
+                <h2 className="text-3xl text-[#D3D3D3] font-bold font-mono">Contact</h2>
+                <div className='mt-4 flex items-center'>
+                   <p className='flex items-center mr-10'><MdEmail className='mr-3 text-xl'></MdEmail> <span>anisSarkeraraf@gmail.com</span></p>
+                   <a href="https://www.facebook.com/profile.php?id=100055064865127&mibextid=ZbWKwL"><p><FaFacebook className='mr-10 text-xl'></FaFacebook></p></a>
+                   <a href="https://github.com/anissarkeraraf"><p><FaGithub className='text-xl'></FaGithub></p></a>
+                </div>
+                <form onSubmit={handleSubmit} className='mt-4'>
+                    <div className='mb-4'>
+                        <label className='block text-xl font-thin mb-2'>Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                            className='w-full p-2 rounded text-black'
+                            required
+                        />
+                    </div>
+                    <div className='mb-4'>
+                        <label className='block text-xl font-thin mb-2'>Email</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            className='w-full p-2 rounded text-black'
+                            required
+                        />
+                    </div>
+                    <div className='mb-4'>
+                        <label className='block text-xl font-thin mb-2'>Message</label>
+                        <textarea
+                            name="message"
+                            value={form.message}
+                            onChange={handleChange}
+                            className='w-full p-2 rounded text-black'
+                            required
+                        ></textarea>
+                    </div>
+                    <button type="submit" className='btn bg-blue-500 text-white font-bold mt-4 border-none py-2 px-4 rounded'>Send Message</button>
+                </form>
             </div>
         </div>
     );
