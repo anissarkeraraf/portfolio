@@ -1,5 +1,5 @@
-import React from 'react';
 import pdfPage from '../../assets/Landing Page Design.pdf';
+import './home.css'
 
 const Home = () => {
     const skills = [
@@ -15,31 +15,31 @@ const Home = () => {
 
     const projects = [
         {
-            name: "Project One",
-            description: "This is a detailed description of Project One.",
-            coreFeatures: ["Feature 1", "Feature 2", "Feature 3"],
-            technologies: ["React", "Node.js", "MongoDB"],
-            liveLink: "https://live-link-project-one.com",
-            clientCodeLink: "https://github.com/yourusername/project-one-client",
-            serverCodeLink: "https://github.com/yourusername/project-one-server",
+            name: "Battle For Supermacy (Blood Buddies)",
+            description: "If you have a blood donation, you can visit the blood buddies website. You can also create blood requests. You can also donate blood if you want.",
+            coreFeatures: ["You can donate blood", "Blood can be taken if needed", "Get our support"],
+            technologies: ["React", "Node.js", "MongoDB", "Tailwind", "HTML", "Firebase"],
+            liveLink: "https://blood-buddies-d80de.web.app/",
+            clientCodeLink: "https://github.com/anissarkeraraf/battle-for-supermacy-client-site",
+            serverCodeLink: "https://github.com/anissarkeraraf/battle-for-supermacy-server-site",
         },
         {
-            name: "Project Two",
-            description: "This is a detailed description of Project Two.",
-            coreFeatures: ["Feature 1", "Feature 2", "Feature 3"],
-            technologies: ["React", "Firebase", "Tailwind CSS"],
-            liveLink: "https://live-link-project-two.com",
-            clientCodeLink: "https://github.com/yourusername/project-two-client",
-            serverCodeLink: "https://github.com/yourusername/project-two-server",
+            name: "7Bite",
+            description: "Welcome to 7bite. We provide you with good quality treatment. Here you will find treatment for various diseases",
+            coreFeatures: ["Get a good doctor", "We provide servide", "Get our support"],
+            technologies: ["React", "Node.js", "MongoDB", "Tailwind", "HTML", "Firebase"],
+            liveLink: "assignment-eleven-72a4e.web.app/",
+            clientCodeLink: "https://github.com/anissarkeraraf/7bite-client-site",
+            serverCodeLink: "https://github.com/anissarkeraraf/7bite-server-site",
         },
         {
-            name: "Project Three",
-            description: "This is a detailed description of Project Three.",
-            coreFeatures: ["Feature 1", "Feature 2", "Feature 3"],
-            technologies: ["React", "Node.js", "MongoDB"],
-            liveLink: "https://live-link-project-three.com",
-            clientCodeLink: "https://github.com/yourusername/project-three-client",
-            serverCodeLink: "https://github.com/yourusername/project-three-server",
+            name: "Goromer Adventure",
+            description: "Come and visit your favorite place during summer with us. And you can visit gorom kaler adventure web page to spend time with your family",
+            coreFeatures: ["Family tour", "You can give tours outside the country", "Get our support"],
+            technologies: ["React", "Node.js", "MongoDB", "Tailwind", "HTML", "Firebase"],
+            liveLink: "gorom-gorom-adventure.web.app/",
+            clientCodeLink: "https://github.com/anissarkeraraf/goremer-adventure",
+            serverCodeLink: "https://github.com/anissarkeraraf/goromer-adventure-server-site",
         },
     ];
 
@@ -93,7 +93,7 @@ const Home = () => {
                 <h2 className="text-3xl text-[#D3D3D3] font-bold font-mono">My Projects</h2>
                 <div className='mt-4 grid grid-cols-1 gap-10'>
                     {projects.map((project, index) => (
-                        <div key={index} className='project-card bg-gray-800 p-6 rounded-lg'>
+                        <div key={index} className='project-card bg-gray-800 p-6 rounded-lg glass'>
                             <h3 className="text-2xl text-[#D3D3D3] font-bold mb-2">{project.name}</h3>
                             <p className='text-xl font-thin mb-2'>{project.description}</p>
                             <h4 className='font-bold text-[#D3D3D3]'>Core Features:</h4>
@@ -104,10 +104,16 @@ const Home = () => {
                             </ul>
                             <h4 className='font-bold text-[#D3D3D3]'>Used Technologies:</h4>
                             <p className='font-thin mb-2'>{project.technologies.join(", ")}</p>
-                            <div className='flex justify-between'>
-                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className='text-blue-400'>Live Link</a>
-                                <a href={project.clientCodeLink} target="_blank" rel="noopener noreferrer" className='text-blue-400'>Client Code</a>
-                                <a href={project.serverCodeLink} target="_blank" rel="noopener noreferrer" className='text-blue-400'>Server Code</a>
+                            <div className='grid grid-cols-2 md:grid-cols-3 gap-10 mt-10'>
+                                <div>
+                                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className='btn text-white border-none'>Visit My Project</a>
+                                </div>
+                                <div>
+                                    <a href={project.clientCodeLink} target="_blank" rel="noopener noreferrer" className='btn text-white border-none'>Project Client Code</a>
+                                </div>
+                                <div>
+                                    <a href={project.serverCodeLink} target="_blank" rel="noopener noreferrer" className='btn text-white border-none'>Project Server Code</a>
+                                </div>
                             </div>
                         </div>
                     ))}
